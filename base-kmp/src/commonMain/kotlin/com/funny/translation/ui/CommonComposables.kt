@@ -12,11 +12,13 @@ import androidx.compose.foundation.layout.only
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.windowInsetsPadding
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyListScope
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.IconButton
+import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
@@ -54,17 +56,32 @@ fun CommonPage(
     },
     content: @Composable ColumnScope.() -> Unit
 ) {
-    Column(
-        modifier
-            .fillMaxSize()
-            .windowInsetsPadding(WindowInsets.safeMain.only(WindowInsetsSides.Horizontal + WindowInsetsSides.Top)),
-        horizontalAlignment = Alignment.CenterHorizontally
-    ) {
-        topBar()
-        content()
-        if (addNavPadding) {
-            NavPaddingItem()
+//    Column(
+//        modifier
+//            .fillMaxSize()
+//            .windowInsetsPadding(WindowInsets.safeMain.only(WindowInsetsSides.Horizontal + WindowInsetsSides.Top)),
+//        horizontalAlignment = Alignment.CenterHorizontally
+//    ) {
+//        topBar()
+//        content()
+//        if (addNavPadding) {
+//            NavPaddingItem()
+//        }
+//    }
+    Scaffold(
+        topBar = topBar,
+    ) { paddingValues ->
+        Column(
+            modifier
+                .fillMaxSize()
+                .padding(paddingValues)
+        ) {
+            content()
+            if (addNavPadding) {
+                NavPaddingItem()
+            }
         }
+
     }
 }
 
