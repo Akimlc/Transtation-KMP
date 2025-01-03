@@ -97,8 +97,8 @@ actual fun TransTheme(
                     Color.TRANSPARENT,
                 ) { dark },
                 navigationBarStyle =
-                if (dark) SystemBarStyle.dark(transparent)
-                else SystemBarStyle.light(transparent, c),
+                    if (dark) SystemBarStyle.dark(transparent)
+                    else SystemBarStyle.light(transparent, c),
             )
             onDispose {}
         }
