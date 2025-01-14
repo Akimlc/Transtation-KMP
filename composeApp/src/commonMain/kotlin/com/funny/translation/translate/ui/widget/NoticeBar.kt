@@ -90,7 +90,7 @@ fun NoticeBar(
                     tint = color,
                     modifier = Modifier
                         .size(iconSize)
-                        .align(Alignment.Top)
+                        .align(Alignment.CenterVertically)
                         .clickable {
                             show = false
                         },
