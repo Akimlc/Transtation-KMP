@@ -55,8 +55,6 @@ fun ColumnScope.ModelListPart(
     onModelSelected: (model: Model) -> Unit,
     maxHeight: Dp = 400.dp,
 ) {
-
-
     Category(
         title = ResStrings.model_select,
         helpText = ResStrings.model_select_help,
@@ -68,7 +66,7 @@ fun ColumnScope.ModelListPart(
         })
         var searchQuery by rememberStateOf("")
         val data by produceState(emptyList(), key1 = searchQuery) {
-            value = state.value.getOrDefault<List<Model>>(emptyList()).run {
+            value = state.value.getOrDefault(emptyList()).run {
                 if (searchQuery.isNotEmpty()) {
                     delay(300)
                     this.filter { it.name.contains(searchQuery, ignoreCase = true) }

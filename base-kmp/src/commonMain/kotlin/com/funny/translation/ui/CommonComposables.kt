@@ -115,6 +115,7 @@ fun CommonTopBar(
 fun TransparentTopBar(
     modifier: Modifier = Modifier,
     title: String? = null,
+    titleColor: Color = Color.Unspecified,
     navController: NavHostController = LocalNavController.current,
     navigationIcon: @Composable () -> Unit = { CommonNavBackIcon(navController) },
     actions: @Composable RowScope.() -> Unit = { },
@@ -133,7 +134,9 @@ fun TransparentTopBar(
         },
         colors = TopAppBarDefaults.topAppBarColors(
             containerColor = Color.Transparent,
-            scrolledContainerColor = Color.Transparent
+            scrolledContainerColor = Color.Transparent,
+            titleContentColor = titleColor,
+            navigationIconContentColor = titleColor
         )
     )
 }

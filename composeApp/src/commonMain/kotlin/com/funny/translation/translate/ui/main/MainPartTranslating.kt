@@ -64,8 +64,11 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+  import androidx.compose.ui.text.SpanStyle
+import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
+import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.dp
@@ -85,11 +88,13 @@ import com.funny.translation.kmp.painterDrawableRes
 import com.funny.translation.strings.ResStrings
 import com.funny.translation.translate.LLMTranslationResult
 import com.funny.translation.translate.Language
+import com.funny.translation.translate.ThinkingStage
 import com.funny.translation.translate.TranslationResult
 import com.funny.translation.translate.TranslationStage
 import com.funny.translation.translate.database.appDB
 import com.funny.translation.translate.database.transFavoriteDao
 import com.funny.translation.translate.ui.TranslateScreen
+import com.funny.translation.translate.ui.main.components.ThinkResult
 import com.funny.translation.translate.ui.widget.ExpandMoreButton
 import com.funny.translation.translate.ui.widget.FrameAnimationIcon
 import com.funny.translation.translate.ui.widget.NoticeBar
@@ -474,11 +479,27 @@ private fun ResultItem(
         }
 
         SelectionContainer {
-            Text(
-                text = result.basic.trim().ifEmpty { "正在翻译中……" },
-                color = MaterialTheme.colorScheme.onPrimaryContainer,
-                fontSize = 16.sp,
-            )
+            Column {
+                if (result.thinkStage != ThinkingStage.IDLE) {
+                    ThinkResult(modifier = Modifier.padding(end = 8.dp), result = result)
+                    Spacer(modifier = Modifier.height(8.dp))
+                }
+                if (result.thinkStage != ThinkingStage.THINKING) {
+                    Text(
+                        text = buildAnnotatedString {
+                            append(result.basic.trim().ifEmpty { "正在翻译中……" })
+                            if (result.error.isNotEmpty()) {
+                                append(" ")
+                                withStyle(style = SpanStyle(color = MaterialTheme.colorScheme.error)) {
+                                    append(result.error)
+                                }
+                            }
+                        },
+                        color = MaterialTheme.colorScheme.onPrimaryContainer,
+                        fontSize = 16.sp,
+                    )
+                }
+            }
         }
         if (expandDetail && result.detailText != null) {
             HorizontalDivider(modifier = Modifier.padding(top = 4.dp))

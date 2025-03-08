@@ -1,5 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="long_text_max_seg_length">最大分段长度</string>
+    <string name="long_text_max_seg_length_help">设置翻译时长文的最大分段长度，值越大，单次翻译的段落越长，这一长段翻译可能更准确，但翻译过程越慢。此值过大时应用可能在输出完毕前视为超时，模型也可能输出不完。建议极限不超过三千。</string>
+    <string name="long_text_max_seg_length_placeholder">默认使用服务器配置：${l}</string>
+
+
+    <string name="thinking_in_progress">深度思考中……</string>
+    <string name="thinking_completed">深度思考完成（用时 %.1f 秒）</string>
+    <string name="expand_think_content">展开/收起深度思考内容</string>
+
+    <!-- Theme Screen -->
+    <string name="theme_type">主题类型</string>
+    <string name="appearance">外观</string>
+
+    <string name="image_theme">图片主题</string>
+    <string name="image_theme_description">从图片中提取主题色</string>
+    <string name="select_theme_image">选择主题图片</string>
+    <string name="image_preview">图片预览</string>
+    <string name="recent_images">最近图片</string>
+    <string name="clear_history">清除历史</string>
+    <string name="no_recent_images">没有最近图片</string>
+
+    <!-- Theme Types -->
+    <string name="default_theme_description">使用应用默认的主题配色</string>
+    <string name="dynamic_theme_description">跟随系统主题色动态变化（Android 12及以上）</string>
+    <string name="custom_theme_description">从预设颜色中选择一个作为主题色</string>
+
+    <!-- Image Theme -->
+    <string name="select_theme_color">选择主题色</string>
+
+    <!-- Light/Dark Mode -->
+    <string name="always_light">浅色模式</string>
+    <string name="always_light_description">始终使用浅色主题</string>
+    <string name="always_dark">深色模式</string>
+    <string name="always_dark_description">始终使用深色主题</string>
+    <string name="follow_system">跟随系统</string>
+    <string name="follow_system_description">根据系统的明暗主题自动切换</string>
+
+    <!-- Color Preview -->
+    <string name="primary_color">主要颜色</string>
+    <string name="secondary_color">次要颜色</string>
+    <string name="tertiary_color">第三颜色</string>
+    <string name="surface_color">表面颜色</string>
+    <string name="background_color">背景颜色</string>
+
+    <!-- Messages -->
+    <string name="dynamic_theme_not_supported">当前系统不支持动态主题</string>
+    <string name="requires_android_12">需要 Android 12 及以上系统</string>
+    <string name="image_load_failed">图片加载失败</string>
+
 <!--    复制原文、复制译文、复制详细翻译、删除-->
     <string name="copy_source_text">复制原文</string>
     <string name="copy_target_text">复制译文</string>
@@ -343,7 +392,7 @@
     <string name="default_long_text_trans_prompt_prefix">你现在是一名优秀的翻译人员，现在在翻译长文中的某个片段。请根据给定的术语表，将输入文本翻译成中文</string>
     <string name="default_long_text_prompt_suffix">，并找出可能存在的新术语（人名、地名、专有名词等）。你的输出分为两部分，以||sep||分割，前半部分是翻译结果，后半部分是关键词，是二维JSON数组，每一项为[\"原文中出现的术语\",\"翻译后文本\"]，无则为[]。\n示例输入：萧红和晓明正在学习数据库课程||sep||[[\"数据库\",\"DB\"],[\"萧红\",\"XiaoHong\"]]\n示例输出：XiaoHong and XiaoMing are studying DB class.||sep||[[\"晓明\",\"XiaoMing\"]]\n\n保持译文和原文格式一致，正确输出换行</string>
     <string name="model_engine">大模型</string>
-    <string name="llm_engine_tip">使用大模型翻译需消耗AI文字点数，具体细则请前往“对话翻译”查看</string>
+    <string name="llm_engine_tip">使用大模型翻译需消耗AI文字点数，具体细则可长按或请前往“对话翻译”查看</string>
     <string name="load_llm_models">加载大模型列表</string>
     <string name="day_hour_min_sec">${day}天${hour}时${min}分${sec}秒</string>
     <string name="failed_to_take_photo">拍照失败！</string>
